@@ -1,0 +1,8 @@
+{
+	"fields" : {
+		"title" : "iPad Pro",
+		"description": "New version of the iPad Pro",
+		"color": "Black",
+		"releaseDate": "2020/01/01"
+	}
+}
