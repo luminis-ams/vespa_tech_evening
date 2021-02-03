@@ -7,6 +7,27 @@ Tech evening
 * Jettro Coenradie
 * Daniel Spee
 
+## Set schema
+
+```
+schema ecommproducts {
+    document ecommproducts {
+    	field title type string  {
+    		indexing: summary | index
+    	}
+    	field description type string  {
+    		indexing: summary | index
+    	}
+    	field color type string  {
+    		indexing: summary | index | attribute
+    	}
+		field releaseDate type string  {
+    		indexing: summary | attribute
+    	}
+    }
+}
+```
+
 ## Startup
 ```
 docker run --detach --name vespa --hostname vespa-container \
