@@ -12,18 +12,36 @@ Tech evening
 ```
 schema ecommproducts {
     document ecommproducts {
-    	field title type string  {
-    		indexing: summary | index
-    	}
-    	field description type string  {
-    		indexing: summary | index
-    	}
-    	field color type string  {
-    		indexing: summary | index | attribute
-    	}
-		field releaseDate type string  {
-    		indexing: summary | attribute
-    	}
+        field id type string {
+            indexing: summary | index | attribute
+        }
+        field img_src type string {
+            indexing: summary | index | attribute
+        }
+        field price type double {
+            indexing: summary | attribute
+        }
+        field tags type array<string> {
+            indexing: summary | index | attribute
+        }
+        field title type string {
+            indexing: summary | index | attribute
+        }
+        field type type string {
+            indexing: summary | index | attribute
+        }
+        field vendor type string {
+            indexing: summary | index | attribute
+        }
+        field description type string {
+            indexing: summary | index | attribute
+        }
+        field numberOfRatings type int {
+            indexing: summary | attribute
+        }
+        field rating type double {
+            indexing: summary | attribute
+        }
     }
 }
 ```
@@ -88,3 +106,8 @@ SELECT * from SOURCES ecommproducts where "title" CONTAINS "iPad" |
 all(group(color) each(max(4) each(output(summary()))));
 ```
 
+## Clean documents
+
+```
+docker exec vespa bash -c '/opt/vespa/bin/vespa-stop-services && /opt/vespa/bin/vespa-remove-index -force && /opt/vespa/bin/vespa-start-services'
+```

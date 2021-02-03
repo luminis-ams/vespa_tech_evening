@@ -77,7 +77,7 @@ public class Runner {
                 .numberOfRatings(0)
                 .price(89.9)
                 .rating(0.0)
-                .tags(new String[]{" Yoek"})
+                .tags(" Yoek", "Yoek2")
                 .title(" Yoek  Jersey jurk donkerblauw")
                 .type("Home - Jurken online kopen")
                 .vendor(" Yoek")
