@@ -1,4 +1,11 @@
-#README
+# Vespa - Tech Evening - 03/02/2021
+
+Tech evening 
+
+**Attendees:**
+* Byron Voorbach
+* Jettro Coenradie
+* Daniel Spee
 
 ## Startup
 ```
@@ -7,7 +14,10 @@ docker run --detach --name vespa --hostname vespa-container \
   ```
 
 ## Verify (wait till 200)
+
+```
 docker exec vespa bash -c 'curl -s --head http://localhost:19071/ApplicationStatus'
+```
 
 ## Start vespa with application
 
