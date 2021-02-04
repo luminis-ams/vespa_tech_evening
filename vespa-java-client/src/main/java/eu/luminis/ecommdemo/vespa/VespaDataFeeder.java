@@ -18,12 +18,16 @@ import java.util.logging.Logger;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static eu.luminis.ecommdemo.vespa.Runner.VESPA_HOST;
+import static eu.luminis.ecommdemo.vespa.Runner.VESPA_PORT;
+
 public class VespaDataFeeder extends Thread {
+
+    public static final String ID_FORMAT = "id:luminis:ecommproducts::%d";
 
     private final FeedClient feedClient;
     private final Gson gson = new Gson();
     private final BlockingQueue<Product> queue;
-    private static final String ID_FORMAT = "id:luminis:ecommproducts::%d";
     private final AtomicInteger pending = new AtomicInteger(0);
     private boolean shouldRun = true;
     private final Logger logger = Logger.getLogger(VespaDataFeeder.class.getName());
@@ -32,7 +36,7 @@ public class VespaDataFeeder extends Thread {
     VespaDataFeeder(BlockingQueue<Product> queue) {
 
         SessionParams sessionParams = new SessionParams.Builder()
-                .addCluster(new Cluster.Builder().addEndpoint(Endpoint.create("localhost", 8080, false)).build())
+                .addCluster(new Cluster.Builder().addEndpoint(Endpoint.create(VESPA_HOST, VESPA_PORT, false)).build())
                 .setConnectionParams(new ConnectionParams.Builder().build())
                 .setFeedParams(new FeedParams.Builder()
                         .setDataFormat(FeedParams.DataFormat.JSON_UTF8)

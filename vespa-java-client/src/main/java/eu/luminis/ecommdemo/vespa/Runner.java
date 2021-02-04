@@ -7,17 +7,17 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Runner {
     private final Logger logger = Logger.getLogger(Runner.class.getName());
+
+    public static final String VESPA_HOST = "localhost";
+    public static final int VESPA_PORT = 8080;
+    public static final String VESPA_URL = "http://" + VESPA_HOST + ":" + VESPA_PORT;
 
     BlockingQueue<Product> queue;
     VespaDataFeeder dataFeeder;
@@ -40,7 +40,7 @@ public class Runner {
         int attempts = 0;
         URL vespa = null;
         try {
-            vespa = new URL("http://localhost:8080/ApplicationStatus");
+            vespa = new URL(VESPA_URL + "/ApplicationStatus");
         } catch (MalformedURLException e) {
             logger.log(Level.SEVERE, e.getMessage());
             System.exit(1);

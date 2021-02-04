@@ -32,6 +32,11 @@
             <artifactId>vespa-http-client</artifactId>
             <version>7.349.32</version>
         </dependency>
+        <dependency>
+            <groupId>com.yahoo.vespa</groupId>
+            <artifactId>documentapi</artifactId>
+            <version>7.350.53</version>
+        </dependency>
     </dependencies>
 
     <build>
